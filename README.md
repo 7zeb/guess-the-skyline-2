@@ -1,2 +1,5 @@
-# guess-the-skyline-2
-Guess the Skyline 2, Made for a Hackathon
+# Guess the Skyline 2
+
+A skyline guessing game with a twist, made for a hackathon.
+
+## More information will be coming soon
