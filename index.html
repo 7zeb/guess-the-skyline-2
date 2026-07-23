@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script>
+        fetch("colors.json")
+            .then(response => response.json())
+            .then(data => {
+                const colors = data.colors;
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.style.background = randomColor;
+            });
+    </script>
+
     <div class="container">
         <h1 class="title">Guess the Skyline 2</h1>
 
