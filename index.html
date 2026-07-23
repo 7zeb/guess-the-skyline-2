@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        fetch("/json/colors.json")
+        fetch("json/colors.json")
             .then(response => response.json())
             .then(data => {
                 const colors = data.colors;
