@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Skyline 2 — Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+
+        <h1 class="title">Guess the Skyline</h1>
+
+        <p id="question-number" class="question-number">Question: 1</p>
+
+        <img id="skyline-img" class="skyline-img" src="" alt="Skyline">
+
+        <div id="choices" class="choices"></div>
+
+        <button id="submit-btn" class="next-btn">Submit</button>
+        <button id="end-btn" class="next-btn">End Game</button>
+
+        <p id="feedback" class="feedback"></p>
+
+        <div id="fact-box" class="fact-box" style="display:none;">
+            <p id="fact-text"></p>
+            <button id="next-btn" class="next-btn">Next</button>
+        </div>
+
+    </div>
+
+    <!-- Background color loader -->
+    <script>
+        window.onload = function() {
+            fetch("json/colors.json")
+                .then(response => response.json())
+                .then(data => {
+                    const colors = data.colors;
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.style.background = randomColor;
+                });
+        };
+    </script>
+
+    <!-- Game Logic -->
+    <script>
+        let answersData;
+        let roastsData;
+        let factsData;
+        let currentIndex = 0;
+        let questionNumber = 1;
+        let selectedChoice = null;
+
+        const skylineImg = document.getElementById("skyline-img");
+        const choicesDiv = document.getElementById("choices");
+        const feedback = document.getElementById("feedback");
+        const factBox = document.getElementById("fact-box");
+        const factText = document.getElementById("fact-text");
+        const questionNumberDisplay = document.getElementById("question-number");
+
+        function loadQuestion() {
+            const entry = answersData.entries[currentIndex];
+
+            skylineImg.src = "images/" + entry.image;
+
+            choicesDiv.innerHTML = "";
+            feedback.textContent = "";
+            factBox.style.display = "none";
+            selectedChoice = null;
+
+            entry.choices.forEach(choice => {
+                const btn = document.createElement("button");
+                btn.className = "choice-btn";
+                btn.textContent = choice;
+
+                btn.onclick = () => {
+                    selectedChoice = choice;
+                };
+
+                choicesDiv.appendChild(btn);
+            });
+        }
+
+        document.getElementById("submit-btn").onclick = () => {
+            if (!selectedChoice) {
+                feedback.textContent = "Pick an answer first.";
+                return;
+            }
+
+            const entry = answersData.entries[currentIndex];
+
+            if (selectedChoice === entry.answer) {
+                // Correct
+                feedback.textContent = "";
+                factText.textContent = factsData[entry.answer];
+                factBox.style.display = "block";
+            } else {
+                // Wrong → roast
+                const roast = roastsData.roasts[Math.floor(Math.random() * roastsData.roasts.length)];
+                feedback.textContent = roast;
+            }
+        };
+
+        document.getElementById("next-btn").onclick = () => {
+            questionNumber++;
+            questionNumberDisplay.textContent = "Question: " + questionNumber;
+
+            currentIndex = Math.floor(Math.random() * answersData.entries.length);
+            loadQuestion();
+        };
+
+        document.getElementById("end-btn").onclick = () => {
+            window.location.href = "index.html";
+        };
+
+        // Load all JSON files
+        Promise.all([
+            fetch("json/answers.json").then(r => r.json()),
+            fetch("json/roasts.json").then(r => r.json()),
+            fetch("json/facts.json").then(r => r.json())
+        ]).then(([answers, roasts, facts]) => {
+            answersData = answers;
+            roastsData = roasts;
+            factsData = facts;
+
+            loadQuestion();
+        });
+    </script>
+
+</body>
+</html>
