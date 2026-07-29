@@ -18,14 +18,16 @@
 
         <div id="choices" class="choices"></div>
 
-        <button id="submit-btn" class="next-btn">Submit</button>
-        <button id="end-btn" class="next-btn">End Game</button>
+        <div class="button-row">
+            <button id="submit-btn" class="main-btn">Submit</button>
+            <button id="end-btn" class="main-btn">End Game</button>
+        </div>
 
         <p id="feedback" class="feedback"></p>
 
         <div id="fact-box" class="fact-box" style="display:none;">
             <p id="fact-text"></p>
-            <button id="next-btn" class="next-btn">Next</button>
+            <button id="next-btn" class="main-btn">Next</button>
         </div>
 
     </div>
@@ -91,12 +93,10 @@
             const entry = answersData.entries[currentIndex];
 
             if (selectedChoice === entry.answer) {
-                // Correct
                 feedback.textContent = "";
                 factText.textContent = factsData[entry.answer];
                 factBox.style.display = "block";
             } else {
-                // Wrong → roast
                 const roast = roastsData.roasts[Math.floor(Math.random() * roastsData.roasts.length)];
                 feedback.textContent = roast;
             }
@@ -118,7 +118,7 @@
         Promise.all([
             fetch("json/answers.json").then(r => r.json()),
             fetch("json/roasts.json").then(r => r.json()),
-            // fetch("json/facts.json").then(r => r.json())
+            fetch("json/facts.json").then(r => r.json())
         ]).then(([answers, roasts, facts]) => {
             answersData = answers;
             roastsData = roasts;
