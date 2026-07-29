@@ -54,6 +54,16 @@
       "image": "/images/fort-worth.jpg",
       "choices": ["Dallas", "Fort Worth", "San Antonio", "Houston"],
       "answer": "Fort Worth"
+    },
+    {
+      "image": "/images/rome.png",
+      "choices": ["Dallas", "New York", "Millan", "Rome"]
+      "answer": "Rome"
+    },
+    {
+      "image": "/images/dubai.png",
+      "choices": ["Dubai", "ROme", "New York", "Mumbai"]
+      "answer": "Dubai"
     }
   ]
 }
