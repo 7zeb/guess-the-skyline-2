@@ -16,8 +16,10 @@ body {
     color: white;
 }
 
-/* Center container */
-.container {
+/* Game container */
+.game-container {
+    width: 90%;
+    max-width: 600px;
     text-align: center;
 }
 
@@ -25,29 +27,77 @@ body {
 .title {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-/* Play button */
-.play-button {
-    display: inline-block;
-    padding: 15px 40px;
-    background: #4a7cff;
-    color: white;
-    font-size: 1.4rem;
+/* Question number */
+.question-number {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Skyline image */
+.skyline-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 10px;
-    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+/* Choices */
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.choice-btn {
+    padding: 12px;
+    background: #4a7cff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
     transition: 0.25s;
 }
 
-.play-button:hover {
+.choice-btn:hover {
     background: #335bd6;
+    transform: scale(1.03);
+}
+
+/* Main buttons */
+.main-btn {
+    padding: 12px 25px;
+    background: #ff6b6b;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.25s;
+}
+
+.main-btn:hover {
+    background: #d94c4c;
     transform: scale(1.05);
 }
 
-/* Credits */
-.credit {
-    margin-top: 50px;
-    font-size: 0.9rem;
-    opacity: 0.7;
+/* Feedback */
+.feedback {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    min-height: 30px;
+}
+
+/* Fact box */
+.fact-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
 }
