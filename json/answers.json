@@ -1,67 +1,67 @@
 {
   "entries": [
     {
-      "image": "images/chicago.jpg",
+      "image": "/images/chicago.jpg",
       "choices": ["New York", "Chicago", "Toronto", "London"],
       "answer": "Chicago"
     },
     {
-      "image": "images/newyork.jpg",
+      "image": "/images/newyork.jpg",
       "choices": ["Chicago", "Mumbai", "Dubai", "New York"],
       "answer": "New York"
     },
     {
-      "image": "images/cityoflondon.jpeg",
+      "image": "/images/cityoflondon.jpeg",
       "choices": ["New York", "Dubai", "London", "City of London"],
       "answer": "City of London"
     },
     {
-      "image": "images/london.jpeg",
+      "image": "/images/london.jpeg",
       "choices": ["City of London", "Dubai", "New York", "London"],
       "answer": "London"
     },
     {
-      "image": "images/mumbai.jpg",
+      "image": "/images/mumbai.jpg",
       "choices": ["London", "City of London", "Navi Mumbai", "Mumbai"],
       "answer": "Mumbai"
     },
     {
-      "image": "images/navi-mumbai.jpg",
+      "image": "/images/navi-mumbai.jpg",
       "choices": ["Mumbai", "London", "Houston", "Navi Mumbai"],
       "answer": "Navi Mumbai"
     },
     {
-      "image": "images/seoul.jpg",
+      "image": "/images/seoul.jpg",
       "choices": ["Tokyo", "Seoul", "Shanghai", "Hong Kong"],
       "answer": "Seoul"
     },
     {
-      "image": "images/paris.jpg",
+      "image": "/images/paris.jpg",
       "choices": ["London", "Berlin", "Frankfurt", "Paris"],
       "answer": "Paris"
     },
     {
-      "image": "images/berlin.jpg",
+      "image": "/images/berlin.jpg",
       "choices": ["Berlin", "Munich", "Hamburg", "Frankfurt"],
       "answer": "Berlin"
     },
     {
-      "image": "images/dallas.jpg",
+      "image": "/images/dallas.jpg",
       "choices": ["Dallas", "Fort Worth", "Houston", "Austin"],
       "answer": "Dallas"
     },
     {
-      "image": "images/fort-worth.jpg",
+      "image": "/images/fort-worth.jpg",
       "choices": ["Dallas", "Fort Worth", "San Antonio", "Houston"],
       "answer": "Fort Worth"
     },
     {
-      "image": "images/rome.png",
+      "image": "/images/rome.png",
       "choices": ["Dallas", "New York", "Millan", "Rome"],
       "answer": "Rome"
     },
     {
-      "image": "images/dubai.png",
+      "image": "/images/dubai.png",
       "choices": ["Dubai", "Rome", "New York", "Mumbai"],
       "answer": "Dubai"
     }
