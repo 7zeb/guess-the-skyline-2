@@ -118,7 +118,7 @@
         Promise.all([
             fetch("json/answers.json").then(r => r.json()),
             fetch("json/roasts.json").then(r => r.json()),
-            fetch("json/facts.json").then(r => r.json())
+            // fetch("json/facts.json").then(r => r.json())
         ]).then(([answers, roasts, facts]) => {
             answersData = answers;
             roastsData = roasts;
