@@ -62,31 +62,36 @@
         const questionNumberDisplay = document.getElementById("question-number");
 
         function loadQuestion() {
-            const entry = answersData.entries[currentIndex];
+    const entry = answersData.entries[currentIndex];
 
-            skylineImg.src = entry.image;
+    skylineImg.src = entry.image;
 
-            choicesDiv.innerHTML = "";
-            feedback.textContent = "";
-            factBox.style.display = "none";
-            selectedChoice = null;
+    choicesDiv.innerHTML = "";
+    feedback.textContent = "";
+    factBox.style.display = "none";
+    selectedChoice = null;
 
-            entry.choices.forEach(choice => {
-                const btn = document.createElement("button");
-                btn.className = "choice-btn";
-                btn.textContent = choice;
+    entry.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.textContent = choice;
 
-                btn.onclick = () => {
-                selectedChoice = choice;
+        btn.onclick = () => {
+            selectedChoice = choice;
 
-                // Remove highlight from all buttons
-                document.querySelectorAll(".choice-btn").forEach(b => {
+            // Remove highlight from all buttons
+            document.querySelectorAll(".choice-btn").forEach(b => {
                 b.classList.remove("selected");
             });
 
-        // Highlight the clicked button
-        btn.classList.add("selected");
-    };
+            // Highlight the clicked button
+            btn.classList.add("selected");
+        };
+
+        choicesDiv.appendChild(btn);
+    });
+}
+
 
     choicesDiv.appendChild(btn);
 });
