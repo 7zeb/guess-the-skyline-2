@@ -77,12 +77,20 @@
                 btn.textContent = choice;
 
                 btn.onclick = () => {
-                    selectedChoice = choice;
-                };
+                selectedChoice = choice;
 
-                choicesDiv.appendChild(btn);
+                // Remove highlight from all buttons
+                document.querySelectorAll(".choice-btn").forEach(b => {
+                b.classList.remove("selected");
             });
-        }
+
+        // Highlight the clicked button
+        btn.classList.add("selected");
+    };
+
+    choicesDiv.appendChild(btn);
+});
+
 
         document.getElementById("submit-btn").onclick = () => {
             if (!selectedChoice) {
