@@ -57,7 +57,7 @@
     },
     {
       "image": "images/rome.jpg",
-      "choices": ["Dallas", "New York", "Millan", "Rome"],
+      "choices": ["Dallas", "New York", "Milan", "Rome"],
       "answer": "Rome"
     },
     {
