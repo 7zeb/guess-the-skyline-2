@@ -64,6 +64,11 @@
       "image": "images/dubai.jpg",
       "choices": ["Dubai", "Rome", "New York", "Mumbai"],
       "answer": "Dubai"
+    },
+    {
+      "image": "images/Vancouver.png",
+      "choices": ["Toronto", "Chicago", "Seattle", "Vancouver"],
+      "answer": "Vancouver"
     }
   ]
 }
