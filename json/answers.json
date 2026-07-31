@@ -69,6 +69,21 @@
       "image": "images/Vancouver.png",
       "choices": ["Toronto", "Chicago", "Seattle", "Vancouver"],
       "answer": "Vancouver"
+    },
+    {
+      "images": "images/beijing.jpg",
+      "choices": ["Shanghai", "Hong Kong", "Tokyo", "Beijing"],
+      "answer": "Beijing"
+    },
+    {
+      "image": "images/detroit.jpg",
+      "choices": ["Miami", "Houston", "Austin", "Detroit"],
+      "answer": "Detroit"
+    },
+    {
+      "image": "images/mississauga.jpg",
+      "choices": ["Toronto", "Vancouver", "Mississauga", "London"],
+      "answer": "Mississauga"
     }
   ]
 }
