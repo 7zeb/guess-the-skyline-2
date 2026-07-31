@@ -71,7 +71,7 @@
       "answer": "Vancouver"
     },
     {
-      "images": "images/beijing.jpg",
+      "image": "images/beijing.jpg",
       "choices": ["Shanghai", "Hong Kong", "Tokyo", "Beijing"],
       "answer": "Beijing"
     },
@@ -86,12 +86,12 @@
       "answer": "Mississauga"
     },
     {
-      "images": "images/montreal.jpeg",
+      "image": "images/montreal.jpeg",
       "choices": ["Paris", "Toronto", "Montreal", "Houston"],
       "answer": "Montreal"
     },
     {
-      "images": "images/toronto.jpg",
+      "image": "images/toronto.jpg",
       "choices": ["Mumbai", "Toronto", "Montreal", "Mississauga"],
       "answer": "Toronto"
     }
