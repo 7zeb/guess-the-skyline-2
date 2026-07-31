@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Skyline 2 - Credits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <script>
+        fetch("json/colors.json")
+            .then(response => response.json())
+            .then(data => {
+                const colors = data.colors;
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.style.background = randomColor;
+            });
+    </script>
+
+    <div class="home-container">
+        <h1 class="title">Credits</h1>
+        <br>
+
+        <p>Game Idea: Rutwik Wadekar</p>
+        <p>Game Code: Rutwik Wadekar</p>
+        <p>Game Design: Rutwik Wadekar</p>
+        <p>Beta Testers: <a href="https://www.youtube.com/@AshNorton747">AshNorton</a>
+
+        
+        <p class="credit">(c) 2026 Rutwik Wadekar — 7Zeb</p>
+    </div>
+
+</body>
+</html>
