@@ -115,10 +115,18 @@
         document.getElementById("next-btn").onclick = () => {
             questionNumber++;
             questionNumberDisplay.textContent = "Question: " + questionNumber;
+    
+            // Save the city index they just played
+            const previousIndex = currentIndex;
+    
+            // Keep rolling a random number if it picks the exact same index again
+            do {
+                currentIndex = Math.floor(Math.random() * answersData.entries.length);
+            } while (currentIndex === previousIndex && answersData.entries.length > 1);
 
-            currentIndex = Math.floor(Math.random() * answersData.entries.length);
             loadQuestion();
         };
+
 
         document.getElementById("end-btn").onclick = () => {
             window.location.href = "index.html";
