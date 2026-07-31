@@ -84,6 +84,16 @@
       "image": "images/mississauga.jpg",
       "choices": ["Toronto", "Vancouver", "Mississauga", "London"],
       "answer": "Mississauga"
+    },
+    {
+      "images": "images/montreal.jpeg",
+      "choices": ["Paris", "Toronto", "Montreal", "Houston"],
+      "answer": "Montreal"
+    },
+    {
+      "images": "images/toronto.jpg",
+      "choices": ["Mumbai", "Toronto", "Montreal", "Mississauga"],
+      "answer": "Toronto"
     }
   ]
 }
