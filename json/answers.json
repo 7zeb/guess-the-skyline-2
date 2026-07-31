@@ -56,14 +56,19 @@
       "answer": "Fort Worth"
     },
     {
-      "image": "images/rome.png",
+      "image": "images/rome.jpg",
       "choices": ["Dallas", "New York", "Millan", "Rome"],
       "answer": "Rome"
     },
     {
-      "image": "images/dubai.png",
+      "image": "images/dubai.jpg",
       "choices": ["Dubai", "Rome", "New York", "Mumbai"],
       "answer": "Dubai"
+    },
+    {
+      "image": "images/Vancouver.png",
+      "choices": ["Toronto", "Chicago", "Seattle", "Vancouver"],
+      "answer": "Vancouver"
     }
   ]
 }

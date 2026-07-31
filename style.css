@@ -101,3 +101,9 @@ body {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
 }
+
+.choice-btn.selected {
+    background: #2ecc71; 
+    transform: scale(1.05);
+}
+

@@ -10,7 +10,9 @@
 
     <div class="game-container">
 
-        <h1 class="title">Guess the Skyline</h1>
+        <h1 class="title">Guess the Skyline 2</h1>
+
+        <p>Made by Rutwik Wadekar (7Zeb)</p>
 
         <p id="question-number" class="question-number">Question: 1</p>
 
@@ -78,6 +80,14 @@
 
                 btn.onclick = () => {
                     selectedChoice = choice;
+
+                    // Remove highlight from all buttons
+                    document.querySelectorAll(".choice-btn").forEach(b => {
+                        b.classList.remove("selected");
+                    });
+
+                    // Highlight the clicked button
+                    btn.classList.add("selected");
                 };
 
                 choicesDiv.appendChild(btn);
