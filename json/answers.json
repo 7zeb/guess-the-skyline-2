@@ -94,6 +94,11 @@
       "image": "images/toronto.jpg",
       "choices": ["Mumbai", "Toronto", "Montreal", "Mississauga"],
       "answer": "Toronto"
+    },
+    {
+      "image": "images/london-canada.jpg",
+      "choices": ["London, Canada", "London, UK", "City of London, UK", "London, Ohio"],
+      "answer": "London, Canada"
     }
   ]
 }
