@@ -151,9 +151,14 @@
         loadQuestion();
     };
 
-    document.getElementById("end-btn").onclick = () => {
-        window.location.href = "index.html";
+        document.getElementById("end-btn").onclick = () => {
+        // Save the final counts of this specific game so stats.html can read them
+        localStorage.setItem("gameCounter", gameCounter);
+        localStorage.setItem("wrongGameCounter", wrongGameCounter);
+        
+        window.location.href = "index.html"; // Or stats.html if you want to route straight there!
     };
+
 
     // Load all JSON files
     Promise.all([
