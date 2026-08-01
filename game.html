@@ -48,103 +48,126 @@
     </script>
 
     <!-- Game Logic -->
-    <script>
-        let answersData;
-        let roastsData;
-        let factsData;
-        let currentIndex = 0;
-        let questionNumber = 1;
-        let selectedChoice = null;
+<script>
+    let answersData;
+    let roastsData;
+    let factsData;
+    let currentIndex = 0;
+    let questionNumber = 1;
+    let selectedChoice = null;
+    let hasAnswered = false; // Prevents scoring the same question multiple times
 
-        const skylineImg = document.getElementById("skyline-img");
-        const choicesDiv = document.getElementById("choices");
-        const feedback = document.getElementById("feedback");
-        const factBox = document.getElementById("fact-box");
-        const factText = document.getElementById("fact-text");
-        const questionNumberDisplay = document.getElementById("question-number");
+    // --- SCORE TRACKER INITIALIZATION ---
+    let gameCounter = 0;
+    let wrongGameCounter = 0;
+    
+    // Load global stats from localStorage, default to 0 if empty
+    let globalCounter = parseInt(localStorage.getItem("globalCounter")) || 0;
+    let wrongGlobalCounter = parseInt(localStorage.getItem("wrongGlobalCounter")) || 0;
 
-        function loadQuestion() {
-            const entry = answersData.entries[currentIndex];
+    const skylineImg = document.getElementById("skyline-img");
+    const choicesDiv = document.getElementById("choices");
+    const feedback = document.getElementById("feedback");
+    const factBox = document.getElementById("fact-box");
+    const factText = document.getElementById("fact-text");
+    const questionNumberDisplay = document.getElementById("question-number");
 
-            skylineImg.src = entry.image;
+    function loadQuestion() {
+        const entry = answersData.entries[currentIndex];
+        skylineImg.src = entry.image;
+        choicesDiv.innerHTML = "";
+        feedback.textContent = "";
+        factBox.style.display = "none";
+        selectedChoice = null;
+        hasAnswered = false; // Reset lock for the new question
 
-            choicesDiv.innerHTML = "";
-            feedback.textContent = "";
-            factBox.style.display = "none";
-            selectedChoice = null;
+        entry.choices.forEach(choice => {
+            const btn = document.createElement("button");
+            btn.className = "choice-btn";
+            btn.textContent = choice;
+            btn.onclick = () => {
+                if (hasAnswered) return; // Freeze choices after submitting
+                selectedChoice = choice;
+                document.querySelectorAll(".choice-btn").forEach(b => {
+                    b.classList.remove("selected");
+                });
+                btn.classList.add("selected");
+            };
+            choicesDiv.appendChild(btn);
+        });
+    }
 
-            entry.choices.forEach(choice => {
-                const btn = document.createElement("button");
-                btn.className = "choice-btn";
-                btn.textContent = choice;
-
-                btn.onclick = () => {
-                    selectedChoice = choice;
-
-                    // Remove highlight from all buttons
-                    document.querySelectorAll(".choice-btn").forEach(b => {
-                        b.classList.remove("selected");
-                    });
-
-                    // Highlight the clicked button
-                    btn.classList.add("selected");
-                };
-
-                choicesDiv.appendChild(btn);
-            });
+    document.getElementById("submit-btn").onclick = () => {
+        if (!selectedChoice) {
+            feedback.textContent = "Pick an answer first.";
+            return;
+        }
+        
+        if (hasAnswered) {
+            feedback.textContent = "You already answered this question! Click Next.";
+            return;
         }
 
-        document.getElementById("submit-btn").onclick = () => {
-            if (!selectedChoice) {
-                feedback.textContent = "Pick an answer first.";
-                return;
-            }
+        const entry = answersData.entries[currentIndex];
+        hasAnswered = true; // Lock the question
 
-            const entry = answersData.entries[currentIndex];
+        if (selectedChoice === entry.answer) {
+            // Correct Answer Actions
+            gameCounter++;
+            globalCounter++;
+            localStorage.setItem("globalCounter", globalCounter); // Save to local storage
 
-            if (selectedChoice === entry.answer) {
-                feedback.textContent = "";
-                factText.textContent = factsData[entry.answer];
-                factBox.style.display = "block";
-            } else {
-                const roast = roastsData.roasts[Math.floor(Math.random() * roastsData.roasts.length)];
-                feedback.textContent = roast;
-            }
-        };
+            feedback.textContent = "";
+            factText.textContent = factsData[entry.answer];
+            factBox.style.display = "block";
+        } else {
+            // Wrong Answer Actions
+            wrongGameCounter++;
+            wrongGlobalCounter++;
+            localStorage.setItem("wrongGlobalCounter", wrongGlobalCounter); // Save to local storage
 
-        document.getElementById("next-btn").onclick = () => {
-            questionNumber++;
-            questionNumberDisplay.textContent = "Question: " + questionNumber;
-    
-            // Save the city index they just played
-            const previousIndex = currentIndex;
-    
-            // Keep rolling a random number if it picks the exact same index again
-            do {
-                currentIndex = Math.floor(Math.random() * answersData.entries.length);
-            } while (currentIndex === previousIndex && answersData.entries.length > 1);
+            const roast = roastsData.roasts[Math.floor(Math.random() * roastsData.roasts.length)];
+            feedback.textContent = roast;
+            
+            // Show the next question box anyway so they can proceed
+            factText.textContent = "Incorrect! The right answer was: " + entry.answer;
+            factBox.style.display = "block";
+        }
+        
+        // Debug logging to see it working in your browser console
+        console.log(`Game Correct: ${gameCounter} | Global Correct: ${globalCounter}`);
+        console.log(`Game Wrong: ${wrongGameCounter} | Global Wrong: ${wrongGlobalCounter}`);
+    };
 
-            loadQuestion();
-        };
+    document.getElementById("next-btn").onclick = () => {
+        questionNumber++;
+        questionNumberDisplay.textContent = "Question: " + questionNumber;
 
+        const previousIndex = currentIndex;
+        do {
+            currentIndex = Math.floor(Math.random() * answersData.entries.length);
+        } while (currentIndex === previousIndex && answersData.entries.length > 1);
+        
+        loadQuestion();
+    };
 
-        document.getElementById("end-btn").onclick = () => {
-            window.location.href = "index.html";
-        };
+    document.getElementById("end-btn").onclick = () => {
+        window.location.href = "index.html";
+    };
 
-        // Load all JSON files
-        Promise.all([
-            fetch("json/answers.json").then(r => r.json()),
-            fetch("json/roasts.json").then(r => r.json()),
-            fetch("json/facts.json").then(r => r.json())
-        ]).then(([answers, roasts, facts]) => {
-            answersData = answers;
-            roastsData = roasts;
-            factsData = facts;
+    // Load all JSON files
+    Promise.all([
+        fetch("json/answers.json").then(r => r.json()),
+        fetch("json/roasts.json").then(r => r.json()),
+        fetch("json/facts.json").then(r => r.json())
+    ]).then(([answers, roasts, facts]) => {
+        answersData = answers;
+        roastsData = roasts;
+        factsData = facts;
+        loadQuestion();
+    });
+</script>
 
-            loadQuestion();
-        });
-    </script>
 
 </body>
 </html>
