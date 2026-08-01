@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Skyline 2 — Stats</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Small localized additions to perfectly fit the stats layout */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b0b0cd;
+            margin-bottom: 5px;
+        }
+        .stat-card p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        /* Color emphasis for correct vs wrong */
+        .stat-card.correct p { color: #2ecc71; }
+        .stat-card.wrong p { color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="title">Your Stats</h1>
+        <p class="question-number">Guess the Skyline 2 Performance</p>
+
+        <!-- Stats Grid Layout -->
+        <div class="stats-grid">
+            <div class="stat-card correct">
+                <h3>Last Game Correct</h3>
+                <p id="gameCounter">0</p>
+            </div>
+            <div class="stat-card wrong">
+                <h3>Last Game Wrong</h3>
+                <p id="wrongGameCounter">0</p>
+            </div>
+            <div class="stat-card correct">
+                <h3>Global Correct</h3>
+                <p id="globalCounter">0</p>
+            </div>
+            <div class="stat-card wrong">
+                <h3>Global Wrong</h3>
+                <p id="wrongGlobalCounter">0</p>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button id="back-btn" class="main-btn">Back to Menu</button>
+            <button id="reset-btn" class="main-btn" style="background: #7f8c8d;">Reset All Stats</button>
+        </div>
+    </div>
+
+    <script>
+        // Load data from localStorage or default to 0
+        document.getElementById("gameCounter").textContent = localStorage.getItem("gameCounter") || 0;
+        document.getElementById("wrongGameCounter").textContent = localStorage.getItem("wrongGameCounter") || 0;
+        document.getElementById("globalCounter").textContent = localStorage.getItem("globalCounter") || 0;
+        document.getElementById("wrongGlobalCounter").textContent = localStorage.getItem("wrongGlobalCounter") || 0;
+
+        // Navigation
+        document.getElementById("back-btn").onclick = () => {
+            window.location.href = "index.html";
+        };
+
+        // Reset Logic
+        document.getElementById("reset-btn").onclick = () => {
+            if (confirm("Are you sure you want to completely wipe all your stats?")) {
+                localStorage.clear();
+                // Force update display back to zero
+                document.getElementById("gameCounter").textContent = 0;
+                document.getElementById("wrongGameCounter").textContent = 0;
+                document.getElementById("globalCounter").textContent = 0;
+                document.getElementById("wrongGlobalCounter").textContent = 0;
+            }
+        };
+    </script>
+</body>
+</html>
