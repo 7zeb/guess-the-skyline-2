@@ -116,7 +116,7 @@
       "answer": "Calgary"
     },
     {
-      "image": "edmonton.jpg",
+      "image": "images/edmonton.jpg",
       "choices": ["Calgary", "Edmonton", "Halifax", "Toronto"],
       "answer": "Edmonton"
     },
