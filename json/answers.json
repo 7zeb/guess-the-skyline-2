@@ -99,6 +99,106 @@
       "image": "images/london-canada.jpg",
       "choices": ["London, Canada", "London, UK", "City of London, UK", "London, Ohio"],
       "answer": "London, Canada"
+    },
+    {
+      "image": "images/amsterdam.jpg",
+      "choices": ["London", "Amsterdam", "Rotterdam", "The Hague"],
+      "answer": "Amsterdam"
+    },
+    {
+      "image": "images/austin.jpg",
+      "choices": ["Dallas", "Fort Worth", "Austin", "Houston"],
+      "answer": "Austin"
+    },
+    {
+      "image": "images/calgary.jpg",
+      "choices": ["Calgary", "Edmonton", "Toronto", "Halifax"],
+      "answer": "Calgary"
+    },
+    {
+      "image": "edmonton.jpg",
+      "choices": ["Calgary", "Edmonton", "Halifax", "Toronto"],
+      "answer": "Edmonton"
+    },
+    {
+      "image": "images/Frankfurt.jpg",
+      "choices": ["London", "Paris", "Warsaw", "Frankfurt"],
+      "answer": "Frankfurt"
+    },
+    {
+      "image": "images/glasgow.jpg",
+      "choices": ["London", "Manchester", "Glasgow", "Frankfurt"],
+      "answer": "Glasgow"
+    },
+    {
+      "image": "images/hamburg.jpg",
+      "choices": ["Frankfurt", "Hamburg", "Berlin", "Amsterdam"],
+      "answer": "Hamburg"
+    },
+    {
+      "image": "images/houston.jpg",
+      "choices": ["Austin", "Dallas", "Houston", "Fort Worth"],
+      "answer": "Houston"
+    },
+    {
+      "image": "images/hyderabad.jpg",
+      "choices": ["Hyderabad", "Houston", "Mumbai", "Delhi"],
+      "answer": "Hyderabad",
+    },
+    {
+      "image": "images/lisbon.jpeg",
+      "choices": ["London", "Paris", "Frankfurt", "Lisbon"],
+      "answer": "Lisbon"
+    },
+    {
+      "image": "images/manchester.jpg",
+      "choices": ["Manchester", "Glasgow", "London", "Paris"],
+      "answer": "Manchester"
+    },
+    {
+      "image": "images/melbourne.jpg",
+      "choices": ["Sydney", "Singapore", "Dubai", "Melbourne"],
+      "answer": "Melbourne"
+    },
+    {
+      "image": "images/Milian.jpg",
+      "choices": ["Milian", "Rome", "Paris", "Melbourne"],
+      "answer": "Milian"
+    },
+    {
+      "image": "images/monterrey.jpg",
+      "choices": ["Mexico City", "Houston", "Dallas", "Monterrey"],
+      "answer": "Monterrey"
+    },
+    {
+      "image": "images/ottawa.jpg",
+      "choices": ["Toronto", "Ottawa", "Amsterdam", "Kingston"],
+      "answer": "Ottawa"
+    },
+    {
+      "image": "images/pune.jpg",
+      "choices": ["Toronto", "London", "Pune", "Mumbai"],
+      "answer": "Pune"
+    },
+    {
+      "image": "images/rotterdam.jpg",
+      "choices": ["Rotterdam", "Amsterdam", "London", "Paris"],
+      "answer": "Rotterdam"
+    },
+    {
+      "image": "images/singapore.jpg",
+      "choices": ["Dubai", "Singapore", "Mumbai", "Pune"],
+      "answer": "Singapore"
+    },
+    {
+      "image": "images/sydney.jpg",
+      "choices": ["Sydney", "Melbourne", "Dubai", "London"],
+      "answer": "Sydney"
+    },
+    {
+      "images": "images/the-hague.jpg",
+      "choices": ["Rotterdam", "Amsterdam", "Berlin", "The Hague"],
+      "answer": "The Hague"
     }
   ]
 }
