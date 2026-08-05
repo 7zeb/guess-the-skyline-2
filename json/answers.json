@@ -196,7 +196,7 @@
       "answer": "Sydney"
     },
     {
-      "images": "images/the-hague.jpg",
+      "image": "images/the-hague.jpg",
       "choices": ["Rotterdam", "Amsterdam", "Berlin", "The Hague"],
       "answer": "The Hague"
     }
