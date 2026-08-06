@@ -55,13 +55,11 @@
     let currentIndex = 0;
     let questionNumber = 1;
     let selectedChoice = null;
-    let hasAnswered = false; // Prevents scoring the same question multiple times
 
-    // --- SCORE TRACKER INITIALIZATION ---
+    // --- SCORE TRACKER ---
     let gameCounter = 0;
     let wrongGameCounter = 0;
-    
-    // Load global stats from localStorage, default to 0 if empty
+
     let globalCounter = parseInt(localStorage.getItem("globalCounter")) || 0;
     let wrongGlobalCounter = parseInt(localStorage.getItem("wrongGlobalCounter")) || 0;
 
@@ -74,25 +72,24 @@
 
     function loadQuestion() {
         const entry = answersData.entries[currentIndex];
+
         skylineImg.src = entry.image;
         choicesDiv.innerHTML = "";
         feedback.textContent = "";
         factBox.style.display = "none";
         selectedChoice = null;
-        hasAnswered = false; // Reset lock for the new question
 
         entry.choices.forEach(choice => {
             const btn = document.createElement("button");
             btn.className = "choice-btn";
             btn.textContent = choice;
+
             btn.onclick = () => {
-                if (hasAnswered) return; // Freeze choices after submitting
                 selectedChoice = choice;
-                document.querySelectorAll(".choice-btn").forEach(b => {
-                    b.classList.remove("selected");
-                });
+                document.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("selected"));
                 btn.classList.add("selected");
             };
+
             choicesDiv.appendChild(btn);
         });
     }
@@ -102,41 +99,32 @@
             feedback.textContent = "Pick an answer first.";
             return;
         }
-        
-        if (hasAnswered) {
-            feedback.textContent = "You already answered this question! Click Next.";
-            return;
-        }
 
         const entry = answersData.entries[currentIndex];
-        hasAnswered = true; // Lock the question
 
         if (selectedChoice === entry.answer) {
-            // Correct Answer Actions
+            // Correct answer
             gameCounter++;
             globalCounter++;
-            localStorage.setItem("globalCounter", globalCounter); // Save to local storage
+            localStorage.setItem("globalCounter", globalCounter);
 
             feedback.textContent = "";
             factText.textContent = factsData[entry.answer];
             factBox.style.display = "block";
+
         } else {
-            // Wrong Answer Actions
+            // Wrong answer — DO NOT ADVANCE
             wrongGameCounter++;
             wrongGlobalCounter++;
-            localStorage.setItem("wrongGlobalCounter", wrongGlobalCounter); // Save to local storage
+            localStorage.setItem("wrongGlobalCounter", wrongGlobalCounter);
 
             const roast = roastsData.roasts[Math.floor(Math.random() * roastsData.roasts.length)];
             feedback.textContent = roast;
-            
-            // Show the next question box anyway so they can proceed
-            factText.textContent = "Incorrect! The right answer was: " + entry.answer;
-            factBox.style.display = "block";
+
+            // DO NOT show fact box
+            // DO NOT allow next
+            // DO NOT lock the question
         }
-        
-        // Debug logging to see it working in your browser console
-        console.log(`Game Correct: ${gameCounter} | Global Correct: ${globalCounter}`);
-        console.log(`Game Wrong: ${wrongGameCounter} | Global Wrong: ${wrongGlobalCounter}`);
     };
 
     document.getElementById("next-btn").onclick = () => {
@@ -147,20 +135,17 @@
         do {
             currentIndex = Math.floor(Math.random() * answersData.entries.length);
         } while (currentIndex === previousIndex && answersData.entries.length > 1);
-        
+
         loadQuestion();
     };
 
-        document.getElementById("end-btn").onclick = () => {
-        // Save the final counts of this specific game so stats.html can read them
+    document.getElementById("end-btn").onclick = () => {
         localStorage.setItem("gameCounter", gameCounter);
         localStorage.setItem("wrongGameCounter", wrongGameCounter);
-        
-        window.location.href = "index.html"; // Or stats.html if you want to route straight there!
+
+        window.location.href = "index.html";
     };
 
-
-    // Load all JSON files
     Promise.all([
         fetch("json/answers.json").then(r => r.json()),
         fetch("json/roasts.json").then(r => r.json()),
@@ -172,7 +157,6 @@
         loadQuestion();
     });
 </script>
-
 
 </body>
 </html>
